@@ -1,0 +1,42 @@
+
+---
+const { link , description , imageLink , title,imgsrc ,type} = Astro.props;
+---
+
+<article class="eael-grid-post eael-post-grid-column" data-id="33980">
+    <div class="eael-grid-post-holder">
+      <div class="eael-grid-post-holder-inner">
+        <div class="eael-entry-media">
+          <div class="eael-entry-overlay fade-in">
+            <a href={link}></a>
+          </div>
+          <div class="eael-entry-thumbnail">
+            <img
+            src={imgsrc}
+            alt="descriptive text"
+            width="200"
+            height="150" />
+        
+        </div>
+        </div>
+        <div class="eael-entry-wrapper">
+          <header class="eael-entry-header">
+            <h2 class="eael-entry-title"><a class="eael-grid-post-link" href={link} title="Best Remote Access Security Software">{title}</a></h2>
+          </header>
+          <div class="eael-entry-header-after style-two">
+            <div class="eael-entry-meta"></div>
+          </div>
+          <div class="eael-entry-content">
+            <div class="eael-grid-post-excerpt">
+              <p>{description}</p>
+              <a style="background: linear-gradient(90deg, var( --e-global-color-45b2f27 ) 0%, var( --e-global-color-de7637a ) 100%);" href={link+"?type="} class="eael-post-elements-readmore-btn">Read article →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+
+
+ 
