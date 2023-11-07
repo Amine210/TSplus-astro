@@ -2,10 +2,10 @@
 import Article from "../../components/Article.astro"
 import ExtendedBlogSide from "../../components/ExtendedBlogSide.astro"
 import RelatedPosts from "../../components/RelatedPosts.astro" 
+import type { GetStaticPaths } from "astro";
 import Base from "../../layouts/Base.astro";
-import Head from "../../components/Head.astro";
 export async function  getStaticPaths (){
-    const blogs = await Astro.glob("../../blogs/*.md")
+    const blogs = await Astro.glob("../../news/*.md")
     return blogs.map(blog => ({
         params : {
             slug :blog.frontmatter.slug
@@ -15,28 +15,19 @@ export async function  getStaticPaths (){
         }
     }))
 }
-let blogs = await Astro.glob("../../blogs/*.md")
+let blogs = await Astro.glob("../../news/*.md")
 const {Content, frontmatter } = Astro.props.blog
-
 function checkRelated(blog) {
-  let tmp = false ;
-  frontmatter.tags.forEach(tag => {
-    if( blog.frontmatter.tags.includes(tag) ) tmp = true 
-  });
-
-  return tmp && blog.frontmatter.id !=  frontmatter.id;
+  return blog.frontmatter.category == frontmatter.category && blog.frontmatter.id !=  frontmatter.id;
 }
 blogs = blogs.filter(checkRelated);
-
+console.log(blogs)
 
 ---
 
     <!doctype html>
     <html lang="en-US">
-    
-      <Head title={frontmatter.title} description={frontmatter.excerpt} canonical={frontmatter.canonical}  noindex={frontmatter.noindex} 
-      homepage={frontmatter.homepage} raHome={frontmatter.raHome} checkout={frontmatter.checkout}
-      >
+    <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="profile" href="https://gmpg.org/xfn/11">
@@ -116,7 +107,7 @@ blogs = blogs.filter(checkRelated);
     <link rel="icon" href="https://tsplus.net/wp-content/uploads/2021/01/favicon.bmp" sizes="192x192" />
     <link rel="apple-touch-icon" href="https://tsplus.net/wp-content/uploads/2021/01/favicon.bmp" />
     <meta name="msapplication-TileImage" content="https://tsplus.net/wp-content/uploads/2021/01/favicon.bmp" />
-      </Head>
+    </head>
     
     
     
@@ -124,7 +115,7 @@ blogs = blogs.filter(checkRelated);
       <section class="elementor-section elementor-top-section elementor-element elementor-element-644ca40 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="644ca40" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
         <div class="elementor-container elementor-column-gap-default">
                 {/* ARTICLE HERE ! */}
-                <Article title={frontmatter.title} type="BLOG" >
+                <Article title={frontmatter.title} type="NEWS" >
                     <Content/>
                 </Article>
                {/* blogSide HERE ! */}

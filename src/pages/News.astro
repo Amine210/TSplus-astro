@@ -4,7 +4,8 @@ import BlogSide from "../components/BlogSide.astro";
 import ExtendedBlogSide from "../components/ExtendedBlogSide.astro";
 
 
-const blogs = await Astro.glob("../news/*.md")
+let blogs = await Astro.glob("../news/*.md")
+blogs= blogs.filter((blog) => !blog.frontmatter.draft);
 ---
 
 
@@ -86,7 +87,7 @@ const blogs = await Astro.glob("../news/*.md")
                         </div>
                         <div class="elementor-element elementor-element-5fdf8d18 elementor-widget elementor-widget-heading" data-id="5fdf8d18" data-element_type="widget" data-widget_type="heading.default">
                           <div class="elementor-widget-container">
-                            <h1 class="elementor-heading-title elementor-size-default">Welcome to the TSplus Blog</h1>
+                            <h1 class="elementor-heading-title elementor-size-default">Welcome to the TSplus News</h1>
                           </div>
                         </div>
                         <div class="elementor-element elementor-element-5a1fa0e5 elementor-widget elementor-widget-text-editor" data-id="5a1fa0e5" data-element_type="widget" data-widget_type="text-editor.default">
@@ -121,7 +122,10 @@ const blogs = await Astro.glob("../news/*.md")
                          description={blog.frontmatter.excerpt}
                          title={blog.frontmatter.title}
                          imageLink ={blog.frontmatter.imageLink}
-                         imgsrc={blog.frontmatter.imageLink}/>
+                         imgsrc={blog.frontmatter.imageLink}
+                         category={blog.frontmatter.tags}
+                         
+                         />
                         
                           })
                         }        

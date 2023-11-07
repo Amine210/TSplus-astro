@@ -15,8 +15,19 @@ export async function  getStaticPaths (){
         }
     }))
 }
-
+let blogs = await Astro.glob("../../news/*.md")
 const {Content, frontmatter } = Astro.props.blog
+function checkRelated(blog) {
+  let tmp = false ;
+  frontmatter.tags.forEach(tag => {
+    if( blog.frontmatter.tags.includes(tag) ) tmp = true 
+  });
+
+  return tmp && blog.frontmatter.id !=  frontmatter.id;
+}
+blogs = blogs.filter(checkRelated);
+
+
 ---
 
     <!doctype html>
@@ -114,10 +125,16 @@ const {Content, frontmatter } = Astro.props.blog
                 </Article>
                {/* blogSide HERE ! */}
                <ExtendedBlogSide/>
+
         </div>
+        
+          <RelatedPosts posts = {blogs}/>
+        
+        
+         
       </section>
-                {/* relatedpost here */}
-                <RelatedPosts/>
+           
+               
    </div>
                 
     

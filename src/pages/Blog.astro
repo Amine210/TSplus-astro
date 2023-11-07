@@ -3,7 +3,8 @@ import Cards from "../components/Card.astro";
 import BlogSide from "../components/BlogSide.astro";
 import ExtendedBlogSide from "../components/ExtendedBlogSide.astro";
 
-const blogs = await Astro.glob("../blogs/*.md")
+let blogs = await Astro.glob("../blogs/*.md")
+ blogs= blogs.filter((blog) => !blog.frontmatter.draft);
 
 
 
@@ -124,7 +125,8 @@ const blogs = await Astro.glob("../blogs/*.md")
                          description={blog.frontmatter.excerpt}
                          title={blog.frontmatter.title}
                          imageLink ={blog.frontmatter.imageLink}
-                         imgsrc={blog.frontmatter.imageLink}/>
+                         imgsrc={blog.frontmatter.imageLink}
+                         category = {blog.frontmatter.tags}  />
                         
                           })
                         }        

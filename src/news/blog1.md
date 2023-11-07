@@ -1,10 +1,18 @@
 ---
-title : blog1
-slug : blog1 
+title : blog3
+slug : blog3
 excerpt : The him father parish looked has sooner. Attachment frequently gay terminated son. You greater nay use prudent placing. Passage to so distant behaved natural between do talking. Friends off her windows painful. 
 date : 6-11-2023
 author : Amine Boukhari 
 imageLink: "https://tsplus.net/wp-content/uploads/2023/06/The-Best-Microsoft-RDS-Alternatives.png"
+tags : [astro , css]
+id : 1 
+canonical: 
+noindex:
+homepage:
+raHome:
+checkout: 
+draft: false
 ---
 
 

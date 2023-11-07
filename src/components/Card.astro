@@ -1,6 +1,7 @@
 
 ---
-const { link , description , imageLink , title,imgsrc ,type} = Astro.props;
+const { link , description , imageLink , title,imgsrc ,type , tags } = Astro.props;
+console.log(tags)
 ---
 
 <article class="eael-grid-post eael-post-grid-column" data-id="33980">
@@ -9,6 +10,7 @@ const { link , description , imageLink , title,imgsrc ,type} = Astro.props;
         <div class="eael-entry-media">
           <div class="eael-entry-overlay fade-in">
             <a href={link}></a>
+          
           </div>
           <div class="eael-entry-thumbnail">
             <img
@@ -28,6 +30,7 @@ const { link , description , imageLink , title,imgsrc ,type} = Astro.props;
           </div>
           <div class="eael-entry-content">
             <div class="eael-grid-post-excerpt">
+                <a>{tags}</a>
               <p>{description}</p>
               <a style="background: linear-gradient(90deg, var( --e-global-color-45b2f27 ) 0%, var( --e-global-color-de7637a ) 100%);" href={link+"?type="} class="eael-post-elements-readmore-btn">Read article →</a>
             </div>
